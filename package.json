@@ -1,0 +1,60 @@
+{
+  "name": "effect-data-flow-visualizer",
+  "displayName": "Effect Data Flow Visualizer",
+  "description": "Visualize Effect data flow graphs with Mermaid diagrams",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Visualization",
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "effect-parser.visualize",
+        "title": "Effect: Visualize Data Flow",
+        "category": "Effect"
+      },
+      {
+        "command": "effect-parser.visualizeCurrentFile",
+        "title": "Effect: Visualize Current File",
+        "category": "Effect"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceLangId == typescript || resourceLangId == typescriptreact",
+          "command": "effect-parser.visualizeCurrentFile",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "bun run build",
+    "build": "bun build src/extension.ts --outdir dist --target node --format cjs --external vscode",
+    "watch": "bun build src/extension.ts --outdir dist --target node --format cjs --external vscode --watch",
+    "test": "echo \"No tests yet\"",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.22.0",
+    "typescript": "^5.0.0",
+    "@types/graphlib": "^2.1.12"
+  },
+  "dependencies": {
+    "ts-morph": "^27.0.2",
+    "graphlib": "^2.1.8"
+  }
+}

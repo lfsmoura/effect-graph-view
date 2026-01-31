@@ -1,0 +1,20 @@
+{
+  "name": "@dotfiles/effect-parser",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "test": "bun run src/test.ts",
+    "visualize": "bun run src/generate-viz.ts output/ccmanager-graph.json",
+    "analyze": "bun run src/test.ts && bun run src/generate-viz.ts output/ccmanager-graph.json output/ccmanager-visualization.md"
+  },
+  "dependencies": {
+    "ts-morph": "^27.0.2",
+    "graphlib": "^2.1.8"
+  },
+  "devDependencies": {
+    "@types/graphlib": "^2.1.12",
+    "@types/bun": "latest"
+  }
+}
